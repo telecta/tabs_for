@@ -32,7 +32,7 @@ module TabsFor
           content += " " + content_tag(:span, options[:size], :class => "badge")
         end
 
-        content_tag(:li, role: "presentation", class: options[:class]) do
+        content_tag(:li, role: "presentation", class: options[:active] ? "active" : nil) do
           link_to "#" + attribute.to_s.downcase, "aria-controls" => attribute.to_s.downcase, "data-toggle" => "tab", :role => "tab" do
             content.html_safe
           end
@@ -58,8 +58,9 @@ module TabsFor
 
       def tab(attribute, options = {}, &block)
         content_tag(:div, template.capture(&block), :role => "tabpanel",
-                    :class =>"tab-pane fade", :id => attribute.to_s)
+                    :class => "tab-pane" + (options[:active] ? " active" : ""), :id => attribute.to_s)
       end
+
     end
 
   end

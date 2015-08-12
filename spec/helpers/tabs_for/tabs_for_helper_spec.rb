@@ -25,6 +25,14 @@ describe TabsFor::TabsForHelper do
         "</li>"
       )
     end
+
+    context "options[:active]" do
+      it "renders the tab to active" do
+        expect(builder(company).tab(:name, :active => true)).to match(
+          /<li role=\"presentation\" class=\"active\">/
+        )
+      end
+    end
   end
 
   describe TabsFor::TabsForHelper::PaneBuilder do
@@ -34,11 +42,17 @@ describe TabsFor::TabsForHelper do
     end
 
     it "renders a tab pane" do
-      expect(builder(company).tab(:name) do
-        "content"
-      end).to eq(
-        "<div role=\"tabpanel\" class=\"tab-pane fade\" id=\"name\">content</div>"
+      expect(builder(company).tab(:name) { "some content" }).to eq(
+        "<div role=\"tabpanel\" class=\"tab-pane\" id=\"name\">some content</div>"
       )
+    end
+
+    describe "options[:active]" do
+      it "renders the pane as active" do
+        expect(builder(company).tab(:name, active: true) { "some content" }).to match(
+          /class=\"tab-pane active\"/
+        )
+      end
     end
   end
 
