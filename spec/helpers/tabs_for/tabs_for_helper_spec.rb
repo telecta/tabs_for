@@ -19,9 +19,9 @@ describe TabsFor::TabsForHelper do
     it "renders a tab" do
       expect(builder(company).tab(:name, :size => company.people.size)).to eq(
         "<li role=\"presentation\">" +
-        "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">" +
-        "name <span class=\"badge\">2</span>" +
-        "</a>" +
+          "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">" +
+            "name <span class=\"badge\">2</span>" +
+          "</a>" +
         "</li>"
       )
     end
@@ -30,6 +30,18 @@ describe TabsFor::TabsForHelper do
       it "renders the tab to active" do
         expect(builder(company).tab(:name, :active => true)).to match(
           /<li role=\"presentation\" class=\"active\">/
+        )
+      end
+    end
+
+    context "options[:icon]" do
+      it "wraps the tab text in an span" do
+        expect(builder(company).tab(:name, icon: "fa fa-building")).to eq(
+          "<i class=\"fa fa-building\">" +
+            "<li role=\"presentation\">" +
+              "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">name</a>" +
+            "</li>" +
+          "</i>"
         )
       end
     end

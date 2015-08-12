@@ -19,7 +19,6 @@ module TabsFor
       end
 
       def tab(attribute, options = {})
-
         content = if object.respond_to? attribute
           human_name attribute
         else
@@ -34,12 +33,16 @@ module TabsFor
 
         content_tag(:li, role: "presentation", class: options[:active] ? "active" : nil) do
           link_to "#" + attribute.to_s.downcase, "aria-controls" => attribute.to_s.downcase, "data-toggle" => "tab", :role => "tab" do
-            content.html_safe
+            options[:icon] ? wrap_with_icon(content.html_safe, options) : content.html_safe
           end
         end
       end
 
       private
+
+      def wrap_with_icon(content, options = {})
+        content_tag(:i, " " + content, class: options[:icon])
+      end
 
       def human_name(attribute_name)
         object.class.human_attribute_name attribute_name
