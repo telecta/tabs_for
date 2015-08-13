@@ -1,5 +1,10 @@
 # TabsFor
 
+[![Build
+Status](https://travis-ci.org/blacktangent/tabs_for.svg?branch=master)](https://travis-ci.org/blacktangent/tabs_for)
+[![Code
+Climate](https://codeclimate.com/github/blacktangent/tabs_for.png)](https://codeclimate.com/github/blacktangent/tabs_for)
+
 Easliy create tabs with with panes.
 
 ## Installation
