@@ -61,7 +61,7 @@ module TabsFor
 
       def tab(attribute, options = {}, &block)
         content_tag(:div, template.capture(&block), :role => "tabpanel",
-                    :class => "tab-pane" + (options[:active] ? " active" : ""), :id => attribute.to_s)
+                    :class => "tab-pane" + (options[:active] ? " active" : ""), :id => options[:id] ? options[:id] : attribute.to_s)
       end
 
     end

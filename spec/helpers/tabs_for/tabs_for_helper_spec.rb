@@ -10,20 +10,42 @@ describe TabsFor::TabsForHelper do
     Company.new("Willis Corp", people)
   end
 
+  before do
+    store_translations(:en, :activerecord => {:attributes => {:company => {:name => "Nome"}}})
+  end
+
   describe TabsFor::TabsForHelper::TabBuilder do
 
     def builder(object)
       TabsFor::TabsForHelper::TabBuilder.new(object, ActionView::Base.new)
     end
 
-    it "renders a tab" do
-      expect(builder(company).tab(:name, :size => company.people.size)).to eq(
-        "<li role=\"presentation\">" +
-          "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">" +
-            "name <span class=\"badge\">2</span>" +
-          "</a>" +
-        "</li>"
-      )
+    describe "#tab" do
+      it "renders a tab" do
+        expect(builder(company).tab(:name, :size => company.people.size)).to eq(
+          "<li role=\"presentation\">" +
+            "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">" +
+              "Nome <span class=\"badge\">2</span>" +
+            "</a>" +
+          "</li>"
+        )
+      end
+
+      describe "when a string is given" do
+        it "renders the tab with that string" do
+          expect(builder(company).tab("Statistics")).to match(
+            /Statistics/
+          )
+        end
+      end
+
+      describe "when a symbol is given an it's a model attribute" do
+        it "translates the attribute" do
+          expect(builder(company).tab(:name)).to match(
+            /Nome/
+          )
+        end
+      end
     end
 
     context "options[:active]" do
@@ -35,13 +57,13 @@ describe TabsFor::TabsForHelper do
     end
 
     context "options[:icon]" do
-      it "wraps the tab text in an span" do
+      it "wraps the tab text in an <i> tag" do
         expect(builder(company).tab(:name, icon: "fa fa-building")).to eq(
-          "<i class=\"fa fa-building\">" +
-            "<li role=\"presentation\">" +
-              "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">name</a>" +
-            "</li>" +
-          "</i>"
+          "<li role=\"presentation\">" +
+            "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">" +
+            "<i class=\"fa fa-building\"> Nome</i>" +
+            "</a>" +
+          "</li>"
         )
       end
     end
@@ -66,6 +88,18 @@ describe TabsFor::TabsForHelper do
         )
       end
     end
+
+    describe "options[:id]" do
+      it "fails" do
+        expect(builder(company).tab(:name, id: "people") { "some content"}).to match(
+          /id=\"people\"/
+        )
+      end
+    end
+  end
+
+  def store_translations(locale, translations)
+    I18n.backend.store_translations locale, translations
   end
 
 end

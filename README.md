@@ -1,8 +1,6 @@
 # TabsFor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tabs_for`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Easliy create tabs with with panes.
 
 ## Installation
 
@@ -22,7 +20,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Generate the tabs with corresponding panes using the API below. `tab`
+takes two arguments and a block. If a symbol is used and the symbol is
+an attribute on the model it will get translated, else the string will
+be used directly. `tab` requires a block, this will be used as content
+in the tabs pane.
+
+```ruby
+<%= tabs_for @company do |b| %>
+  <%= b.tab :users, active: true, icon: 'fa fa-user' do %>
+    <%= render @company.users %>
+  <% end %>
+  <%= b.tab :statistics, icon: 'fa fa-table' do %>
+    <%= render @company.statistics %>
+  <% end %>
+<% end %>
+```
 
 ## Development
 
