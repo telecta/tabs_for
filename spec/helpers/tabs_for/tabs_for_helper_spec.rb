@@ -58,7 +58,7 @@ describe TabsFor::TabsForHelper do
 
     context "options[:icon]" do
       it "wraps the tab text in an <i> tag" do
-        expect(builder(company).tab(:name, icon: "fa fa-building")).to eq(
+        expect(builder(company).tab(:name, :icon => "fa fa-building")).to eq(
           "<li role=\"presentation\">" +
             "<a aria-controls=\"name\" data-toggle=\"tab\" role=\"tab\" href=\"#name\">" +
             "<i class=\"fa fa-building\"> Nome</i>" +
@@ -83,7 +83,7 @@ describe TabsFor::TabsForHelper do
 
     describe "options[:active]" do
       it "renders the pane as active" do
-        expect(builder(company).tab(:name, active: true) { "some content" }).to match(
+        expect(builder(company).tab(:name, :active => true) { "some content" }).to match(
           /class=\"tab-pane active\"/
         )
       end
@@ -91,7 +91,7 @@ describe TabsFor::TabsForHelper do
 
     describe "options[:id]" do
       it "fails" do
-        expect(builder(company).tab(:name, id: "people") { "some content"}).to match(
+        expect(builder(company).tab(:name, :id => "people") { "some content"}).to match(
           /id=\"people\"/
         )
       end

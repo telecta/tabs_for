@@ -41,7 +41,7 @@ module TabsFor
       private
 
       def wrap_with_icon(content, options = {})
-        content_tag(:i, " " + content, class: options[:icon])
+        content_tag(:i, " " + content, :class => options[:icon])
       end
 
       def human_name(attribute_name)
