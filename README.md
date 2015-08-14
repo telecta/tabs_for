@@ -38,7 +38,7 @@ an attribute on the model it will get translated, else the string will
 be used directly. `tab` requires a block, this will be used as content
 in the tabs pane.
 
-```ruby
+```erb
 <%= tabs_for @company do |b| %>
   <%= b.tab :users, active: true, icon: 'fa fa-user' do %>
     <%= render @company.users %>
