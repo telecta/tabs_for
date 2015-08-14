@@ -23,7 +23,7 @@ Or install it yourself as:
 
     $ gem install tabs_for
 
-The gem depends on Bootstrap 3 to create the tabs. Bring bootstrap into
+The gem depends on [Bootstrap 3](http://getbootstrap.com/) to create the tabs. Bring bootstrap into
 your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sass) or you preferred method.
 
 Preferred icon and CSS framework is [Font
