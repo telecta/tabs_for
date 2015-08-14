@@ -23,6 +23,13 @@ Or install it yourself as:
 
     $ gem install tabs_for
 
+The gem depends on Bootstrap 3 to create the tabs. Bring bootstrap into
+your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sass) or you preferred method.
+
+Preferred icon and CSS framework is [Font
+Awesome](https://github.com/bokmann/font-awesome-rails), but other
+frameworks should also be usable.
+
 ## Usage
 
 Generate the tabs with corresponding panes using the API below. `tab`
