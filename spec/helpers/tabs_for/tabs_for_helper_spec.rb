@@ -39,11 +39,21 @@ describe TabsFor::TabsForHelper do
         end
       end
 
-      describe "when a symbol is given an it's a model attribute" do
-        it "translates the attribute" do
-          expect(builder(company).tab(:name)).to match(
-            /Nome/
-          )
+      describe "when a symbol is given" do
+        describe "and it's a model attribute" do
+          it "translates the attribute" do
+            expect(builder(company).tab(:name)).to match(
+              /Nome/
+            )
+          end
+        end
+
+        describe "it's not a model attribute" do
+          it "convert to string and titelizes" do
+            expect(builder(company).tab(:non_existent)).to match(
+              /Non Existent/
+            )
+          end
         end
       end
     end
@@ -64,6 +74,14 @@ describe TabsFor::TabsForHelper do
             "<i class=\"fa fa-building\"> Nome</i>" +
             "</a>" +
           "</li>"
+        )
+      end
+    end
+
+    context "options[:title]" do
+      it "overrides the title" do
+        expect(builder(company).tab(:name, :title => "Custom Title")).to match(
+          /Custom Title/
         )
       end
     end

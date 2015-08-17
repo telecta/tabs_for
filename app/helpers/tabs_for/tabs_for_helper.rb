@@ -28,10 +28,12 @@ module TabsFor
       attr_accessor :output_buffer
 
       def tab(attribute, options = {})
-        content = if object.respond_to? attribute
+        content = if options[:title]
+          options.delete(:title)
+        elsif object.respond_to? attribute
           human_name attribute
         else
-          attribute.to_s.capitalize
+          attribute.to_s.titleize
         end
 
         options[:id] ||= identifier(attribute)
@@ -69,7 +71,7 @@ module TabsFor
       end
 
       def wrap_with_icon(content, options = {})
-        content_tag(:i, " " + content, :class => options[:icon])
+        content_tag(:i, " ".html_safe + content, :class => options[:icon])
       end
 
     end
