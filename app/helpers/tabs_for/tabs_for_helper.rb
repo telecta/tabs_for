@@ -19,7 +19,7 @@ module TabsFor
       end
 
       def identifier(attribute)
-        @identifier ||= attribute.to_s.downcase
+        attribute.to_s.downcase
       end
 
     end
