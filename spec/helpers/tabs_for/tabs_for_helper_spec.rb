@@ -58,7 +58,7 @@ describe TabsFor::TabsForHelper do
       end
     end
 
-    context "options[:active]" do
+    describe "options[:active]" do
       it "renders the tab to active" do
         expect(builder(company).tab(:name, :active => true)).to match(
           /<li role=\"presentation\" class=\"active\">/
@@ -66,7 +66,7 @@ describe TabsFor::TabsForHelper do
       end
     end
 
-    context "options[:icon]" do
+    describe "options[:icon]" do
       it "wraps the tab text in an <i> tag" do
         expect(builder(company).tab(:name, :icon => "fa fa-building")).to eq(
           "<li role=\"presentation\">" +
@@ -78,13 +78,14 @@ describe TabsFor::TabsForHelper do
       end
     end
 
-    context "options[:title]" do
+    describe "options[:title]" do
       it "overrides the title" do
         expect(builder(company).tab(:name, :title => "Custom Title")).to match(
           /Custom Title/
         )
       end
     end
+
   end
 
   describe TabsFor::TabsForHelper::PaneBuilder do
@@ -111,6 +112,14 @@ describe TabsFor::TabsForHelper do
       it "fails" do
         expect(builder(company).tab(:name, :id => "people") { "some content"}).to match(
           /id=\"people\"/
+        )
+      end
+    end
+
+    describe "options[:help]" do
+      it "renders a help paragraph" do
+        expect(builder(company).tab(:name, help: "Help text") { "some content" }).to match(
+          %r"<p><i class=\"fa fa-info-circle\"> Help text</i></p>"
         )
       end
     end

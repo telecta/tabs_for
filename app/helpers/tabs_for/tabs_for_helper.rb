@@ -12,11 +12,13 @@ module TabsFor
     class ViewBuilder
       include ActionView::Helpers
 
-      attr_accessor :object, :template
+      attr_accessor :object, :template, :output_buffer
 
       def initialize(object, template)
         @object, @template = object, template
       end
+
+      private
 
       def identifier(attribute)
         attribute.to_s.downcase
@@ -25,7 +27,6 @@ module TabsFor
     end
 
     class TabBuilder < ViewBuilder
-      attr_accessor :output_buffer
 
       def tab(attribute, options = {})
         content = if options[:title]
@@ -79,7 +80,17 @@ module TabsFor
     class PaneBuilder < ViewBuilder
 
       def tab(attribute, options = {}, &block)
-        content_tag(:div, template.capture(&block), apply_options(attribute, options))
+        content = "".html_safe
+
+        if options[:help]
+          content += content_tag(:p) do
+            content_tag(:i, " #{options[:help]}".html_safe, class: "fa fa-info-circle")
+          end
+        end
+
+        content += template.capture(&block)
+
+        content_tag(:div, content, apply_options(attribute, options))
       end
 
       private
