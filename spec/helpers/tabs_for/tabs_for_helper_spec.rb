@@ -78,10 +78,10 @@ describe TabsFor::TabsForHelper do
       end
     end
 
-    describe "options[:title]" do
-      it "overrides the title" do
-        expect(builder(company).tab(:name, :title => "Custom Title")).to match(
-          /Custom Title/
+    describe "options[:label]" do
+      it "overrides the label" do
+        expect(builder(company).tab(:name, label: "Custom Label")).to match(
+          /Custom Label/
         )
       end
     end

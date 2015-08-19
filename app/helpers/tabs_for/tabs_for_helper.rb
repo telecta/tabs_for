@@ -29,8 +29,8 @@ module TabsFor
     class TabBuilder < ViewBuilder
 
       def tab(attribute, options = {})
-        content = if options[:title]
-          options.delete(:title)
+        content = if options[:label]
+          options.delete(:label)
         elsif object.respond_to? attribute
           human_name attribute
         else
