@@ -1,11 +1,13 @@
+[travis]: https://travis-ci.org/blacktangent/tabs_for
+[codeclimate]: https://codeclimate.com/github/blacktangent/tabs_for
+
 # TabsFor
 
-[![Build
-Status](https://travis-ci.org/blacktangent/tabs_for.svg?branch=master)](https://travis-ci.org/blacktangent/tabs_for)
-[![Code
-Climate](https://codeclimate.com/github/blacktangent/tabs_for.png)](https://codeclimate.com/github/blacktangent/tabs_for)
+[![Build Status](https://travis-ci.org/blacktangent/tabs_for.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/blacktangent/tabs_for/badges/gpa.svg)][codeclimate]
+[![Test Coverage](https://codeclimate.com/github/blacktangent/tabs_for/badges/coverage.svg)][codeclimate]
 
-Easliy create tabs with with panes.
+ActiveView Helper for creating tabs with Bootstrap 
 
 ## Installation
 

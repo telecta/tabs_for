@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ole J. Rosendahl"]
   spec.email         = ["ole.johnny.rosendahl@gmail.com"]
 
-  spec.summary       = %q{Helper for creating tabs in views with icons and counters}
+  spec.summary       = "ActiveView Helper for creating tabs with Bootstrap."
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/blacktangent/tabs_for"
   spec.license       = "MIT"
