@@ -49,6 +49,17 @@ in the tabs pane.
 <% end %>
 ```
 
+## Options
+Supported options for `tab`:
+
+* __:active__ - Active tab, the contents will be shown upon rendering.
+* __:label__ - Use custom label text in tab header.
+* __:icon__ - Icon used next to tab header text
+* __:size__ - Number of entires in tab pane. Use if tab pane contains
+  table or list.
+* __:id__ - Override element's ID.
+* __:help__ - Add help text shown on top of tab pane.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
