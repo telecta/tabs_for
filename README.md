@@ -32,6 +32,9 @@ Preferred icon and CSS framework is [Font
 Awesome](https://github.com/bokmann/font-awesome-rails), but other
 frameworks should also be usable.
 
+## Screenshot
+![Screenshot](https://cloud.githubusercontent.com/assets/1222916/9381775/987a15ea-4764-11e5-9cf7-dc9812fcfc6c.png)
+
 ## Usage
 
 Generate the tabs with corresponding panes using the API below. `tab`
