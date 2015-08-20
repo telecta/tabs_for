@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/blacktangent/tabs_for/badges/gpa.svg)][codeclimate]
 [![Test Coverage](https://codeclimate.com/github/blacktangent/tabs_for/badges/coverage.svg)][codeclimate]
 
-ActiveView Helper for creating tabs with Bootstrap 
+ActiveView Helper for creating tabs with Bootstrap.
 
 ## Installation
 
@@ -44,12 +44,18 @@ be used directly. `tab` requires a block, this will be used as content
 in the tabs pane.
 
 ```erb
-<%= tabs_for @company do |b| %>
-  <%= b.tab :users, active: true, icon: 'fa fa-user' do %>
-    <%= render @company.users %>
+<%= tabs_for @project do |b| %>
+  <%= b.tab :tasks, icon: "fa fa-tasks", size: @project.tasks.size, active: true do %>
+    <%= render partial: "tasks/table", locals: { tasks: @project.tasks } %>
   <% end %>
-  <%= b.tab :statistics, icon: 'fa fa-table' do %>
-    <%= render @company.statistics %>
+  <%= b.tab :people, icon: "fa fa-users", size: @project.people.size, label: "Members", help: "Only showing active users." do %>
+    <%= render partial: "people/table", locals: { people: @project.people } %>
+  <% end %>
+  <%= b.tab :statistics, icon: "fa fa-bar-chart" do %>
+    <%= render "statistics", object: @project %>
+  <% end %>
+  <%= b.tab :settings, icon: "fa fa-cogs" do %>
+    <%= render "settings", object: @project %>
   <% end %>
 <% end %>
 ```

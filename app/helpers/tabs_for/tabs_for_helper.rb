@@ -83,6 +83,7 @@ module TabsFor
         content = "".html_safe
 
         if options[:help]
+          content += tag(:br)
           content += content_tag(:p) do
             content_tag(:i, " #{options[:help]}".html_safe, class: "fa fa-info-circle")
           end
