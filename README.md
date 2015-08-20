@@ -1,5 +1,7 @@
 [travis]: https://travis-ci.org/blacktangent/tabs_for
 [codeclimate]: https://codeclimate.com/github/blacktangent/tabs_for
+[fontawesome]: https://fortawesome.github.io/Font-Awesome
+[fontawesomerails]: https://github.com/bokmann/font-awesome-rails
 
 # TabsFor
 
@@ -28,9 +30,11 @@ Or install it yourself as:
 The gem depends on [Bootstrap 3](http://getbootstrap.com/) to create the tabs. Bring bootstrap into
 your project by using [Bootstrap for Sass](https://github.com/twbs/bootstrap-sass) or you preferred method.
 
-Preferred icon and CSS framework is [Font
-Awesome](https://github.com/bokmann/font-awesome-rails), but other
-frameworks should also be usable.
+Preferred icon and CSS framework is [Font Awesome][fontawesome] and the `help` option uses
+[Font Awesome][fontawesome] to display the help icon. This dependency
+could easily be removed in the future.
+Bring [Font Awesome][fontawesome] into your project by using
+[font-awesome-rails][fontawesomerails] or your preferred method.
 
 ## Screenshot
 ![Screenshot](https://cloud.githubusercontent.com/assets/1222916/9381832/42b92924-4765-11e5-930e-1c5f236173c3.png)
