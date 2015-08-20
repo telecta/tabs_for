@@ -33,7 +33,7 @@ Awesome](https://github.com/bokmann/font-awesome-rails), but other
 frameworks should also be usable.
 
 ## Screenshot
-![Screenshot](https://cloud.githubusercontent.com/assets/1222916/9381775/987a15ea-4764-11e5-9cf7-dc9812fcfc6c.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/1222916/9381832/42b92924-4765-11e5-930e-1c5f236173c3.png)
 
 ## Usage
 
