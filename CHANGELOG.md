@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.1] 2015-09-05
+## Changed
+- Use minitest instead of rspec
+
 ## [0.1.0] 2015-08-12
 ### Added
 - Initial release. Handles tabs with panes. Supported options are
