@@ -68,5 +68,11 @@ class TabsFor::Rails::TabsForHelperTest < ActionView::TestCase
     assert_select "a", text: "Custom Label"
   end
 
+  test "#tab given the help option renders a help text under the tab" do
+    with_concat_tabs_for(object) { |b| b.tab(:name, help: "Only active projects") {} }
+    assert_select "p" do |element|
+      assert_select element, "i.fa-info-circle", text: "Only active projects"
+    end
+  end
 
 end
