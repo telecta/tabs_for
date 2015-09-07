@@ -3,12 +3,14 @@
 [fontawesome]: https://fortawesome.github.io/Font-Awesome
 [fontawesomerails]: https://github.com/bokmann/font-awesome-rails
 [coveralls]: https://coveralls.io/r/blacktangent/tabs_for
+[rubygems]: https://rubygems.org/gems/tabs_for
 
 # TabsFor
 
 [![Build Status](https://travis-ci.org/blacktangent/tabs_for.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/blacktangent/tabs_for/badges/gpa.svg)][codeclimate]
 [![Test Coverage](http://img.shields.io/coveralls/blacktangent/tabs_for/master.svg)][coveralls]
+[![Gem Version](http://img.shields.io/gem/v/tabs_for.svg)][rubygems]
 
 ActiveView Helper for creating tabs with Bootstrap.
 
