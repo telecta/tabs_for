@@ -42,6 +42,11 @@ Bring [Font Awesome][fontawesome] into your project by using
 ## Screenshot
 ![Screenshot](https://cloud.githubusercontent.com/assets/1222916/9381832/42b92924-4765-11e5-930e-1c5f236173c3.png)
 
+## Sample Application
+
+Sample application using `tabs_for` can be found
+[here](https://github.com/blacktangent/tabs_for-demo).
+
 ## Usage
 
 Generate the tabs with corresponding panes using the API below. `tab`
