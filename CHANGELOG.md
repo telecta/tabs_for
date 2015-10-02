@@ -1,7 +1,12 @@
+
 # Changelog
 
+## [0.1.2] 2015-10-02
+### Changed
+- Depend on rails instead of railties.
+
 ## [0.1.1] 2015-09-05
-## Changed
+### Changed
 - Use minitest instead of rspec
 
 ## [0.1.0] 2015-08-12
