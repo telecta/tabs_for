@@ -59,7 +59,7 @@ class TabsFor::Rails::TabsForHelperTest < ActionView::TestCase
   end
 
   test "#tab given the icon option renders the given icon" do
-    with_concat_tabs_for(object) { |b| b.tab(:name, icon: "fa fa-building") {} }
+    with_concat_tabs_for(object) { |b| b.tab(:name, icon: "building") {} }
     assert_select "i[class=\"fa fa-building\"]"
   end
 

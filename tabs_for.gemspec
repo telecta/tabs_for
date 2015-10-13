@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_dependency "rails", ">= 3.2", "< 5.0"
+  spec.add_dependency "font-awesome-rails", "~> 4.0"
 
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "sqlite3"

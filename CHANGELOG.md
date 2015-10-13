@@ -1,5 +1,8 @@
-
 # Changelog
+
+## [0.2.0] 2015-10-13
+### Fixes
+- Use `font-awesome-rails` to handle icons.
 
 ## [0.1.2] 2015-10-02
 ### Changed

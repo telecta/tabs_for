@@ -28,6 +28,7 @@ module TabsFor
       end
 
       class TabBuilder < ViewBuilder
+        include FontAwesome::Rails::IconHelper
 
         def tab(attribute, options = {})
           content = if options[:label]
@@ -73,7 +74,7 @@ module TabsFor
         end
 
         def wrap_with_icon(content, options = {})
-          content_tag(:i, " ".html_safe + content, :class => options[:icon])
+          fa_icon(options[:icon], text: content)
         end
 
       end
