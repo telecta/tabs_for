@@ -57,16 +57,16 @@ in the tabs pane.
 
 ```erb
 <%= tabs_for @project do |b| %>
-  <%= b.tab :tasks, icon: "fa fa-tasks", size: @project.tasks.size, active: true do %>
+  <%= b.tab :tasks, icon: "tasks", size: @project.tasks.size, active: true do %>
     <%= render partial: "tasks/table", locals: { tasks: @project.tasks } %>
   <% end %>
-  <%= b.tab :people, icon: "fa fa-users", size: @project.people.size, label: "Members", help: "Only showing active users." do %>
+  <%= b.tab :people, icon: "users", size: @project.people.size, label: "Members", help: "Only showing active users." do %>
     <%= render partial: "people/table", locals: { people: @project.people } %>
   <% end %>
-  <%= b.tab :statistics, icon: "fa fa-bar-chart" do %>
+  <%= b.tab :statistics, icon: "bar-chart" do %>
     <%= render "statistics", object: @project %>
   <% end %>
-  <%= b.tab :settings, icon: "fa fa-cogs" do %>
+  <%= b.tab :settings, icon: "cogs" do %>
     <%= render "settings", object: @project %>
   <% end %>
 <% end %>
