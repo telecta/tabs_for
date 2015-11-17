@@ -3,9 +3,9 @@ module TabsFor
     module TabsForHelper
 
       def tabs_for(object, &block)
-        content_tag(:ul, :class => "nav nav-tabs", :role => "tablist") do
+        content_tag(:ul, class: 'nav nav-tabs', role: 'tablist') do
           capture TabBuilder.new(object, self), &block
-        end + content_tag(:div, :class => "tab-content") do
+        end + content_tag(:div, class: 'tab-content') do
           capture PaneBuilder.new(object, self), &block
         end
       end
@@ -16,7 +16,8 @@ module TabsFor
         attr_accessor :object, :template, :output_buffer
 
         def initialize(object, template)
-          @object, @template = object, template
+          @object = object
+          @template = template
         end
 
         private
@@ -32,40 +33,44 @@ module TabsFor
 
         def tab(attribute, options = {})
           content = if options[:label]
-            options.delete(:label)
-          elsif object.respond_to? attribute
-            human_name attribute
-          else
-            attribute.to_s.titleize
-          end
+                      options.delete(:label)
+                    elsif object.respond_to? attribute
+                      human_name attribute
+                    else
+                      attribute.to_s.titleize
+                    end
 
           options[:id] ||= identifier(attribute)
 
           if options[:size]
-            content += " " + content_tag(:span, options[:size], :class => "badge")
+            content += ' ' + content_tag(:span, options[:size], class: 'badge')
           end
 
           content_tag(:li, apply_options(attribute, options)) do
-            link_to "#" + identifier(attribute), apply_link_options(attribute, options) do
-              options[:icon] ? wrap_with_icon(content.html_safe, options) : content.html_safe
+            link_to '#' + identifier(attribute), apply_link_options(attribute) do
+              if options[:icon]
+                wrap_with_icon(content.html_safe, options)
+              else
+                content.html_safe
+              end
             end
           end
         end
 
         private
 
-        def apply_link_options(attribute, options)
+        def apply_link_options(attribute)
           {
-            "aria-controls" => identifier(attribute),
-            "data-toggle" => "tab",
-            :role => "tab",
+            'aria-controls' => identifier(attribute),
+            'data-toggle' => 'tab',
+            role: 'tab'
           }
         end
 
         def apply_options(attribute, options)
           {
-            :role => "presentation",
-            :class => options[:active] ? "active" : nil,
+            role: 'presentation',
+            class: options[:active] ? 'active' : nil
           }
         end
 
@@ -82,12 +87,12 @@ module TabsFor
       class PaneBuilder < ViewBuilder
 
         def tab(attribute, options = {}, &block)
-          content = "".html_safe
+          content = ''.html_safe
 
           if options[:help]
             content += tag(:br)
             content += content_tag(:p) do
-              content_tag(:i, " #{options[:help]}".html_safe, class: "fa fa-info-circle")
+              content_tag(:i, " #{options[:help]}".html_safe, class: 'fa fa-info-circle')
             end
           end
 
@@ -100,9 +105,9 @@ module TabsFor
 
         def apply_options(attribute, options)
           {
-            :role => "tabpanel",
-            :class => "tab-pane" + (options[:active] ? " active" : ""),
-            :id => options[:id] ? options[:id] : identifier(attribute),
+            role: 'tabpanel',
+            class: 'tab-pane' + (options[:active] ? ' active' : ''),
+            id: options[:id] ? options[:id] : identifier(attribute)
           }
         end
 
