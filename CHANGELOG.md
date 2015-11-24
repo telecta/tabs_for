@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.1] 2015-11-24
+### Changed
+- Update dependencies
+
 ## [0.2.0] 2015-10-13
 ### Fixes
 - Use `font-awesome-rails` to handle icons.
