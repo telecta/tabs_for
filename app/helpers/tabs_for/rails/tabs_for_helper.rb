@@ -25,7 +25,6 @@ module TabsFor
         def identifier(attribute)
           attribute.to_s.downcase
         end
-
       end
 
       class TabBuilder < ViewBuilder
@@ -40,14 +39,14 @@ module TabsFor
                       attribute.to_s.titleize
                     end
 
-          options[:id] ||= identifier(attribute)
+          id = options[:id] ? options[:id].to_s : identifier(attribute)
 
           if options[:size]
             content += ' ' + content_tag(:span, options[:size], class: 'badge')
           end
 
           content_tag(:li, apply_options(attribute, options)) do
-            link_to '#' + identifier(attribute), apply_link_options(attribute) do
+            link_to '#' + id, apply_link_options(id) do
               if options[:icon]
                 wrap_with_icon(content.html_safe, options)
               else
@@ -59,9 +58,9 @@ module TabsFor
 
         private
 
-        def apply_link_options(attribute)
+        def apply_link_options(id)
           {
-            'aria-controls' => identifier(attribute),
+            'aria-controls' => id,
             'data-toggle' => 'tab',
             role: 'tab'
           }
@@ -81,7 +80,6 @@ module TabsFor
         def wrap_with_icon(content, options = {})
           fa_icon(options[:icon], text: content)
         end
-
       end
 
       class PaneBuilder < ViewBuilder
@@ -110,7 +108,6 @@ module TabsFor
             id: options[:id] ? options[:id] : identifier(attribute)
           }
         end
-
       end
     end
   end

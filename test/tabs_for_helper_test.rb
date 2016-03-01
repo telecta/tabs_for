@@ -53,26 +53,31 @@ class TabsFor::Rails::TabsForHelperTest < ActionView::TestCase
     assert_pane :statistics, "Content"
   end
 
-  test "#tab given the active option sets the tab to active" do
+  test "#tab given options[:active] sets the tab to active" do
     with_concat_tabs_for(object) { |b| b.tab(:name, active: true) {} }
     assert_select "li[role=\"presentation\"][class=\"active\"]"
   end
 
-  test "#tab given the icon option renders the given icon" do
+  test "#tab given options[:icon] renders the given icon" do
     with_concat_tabs_for(object) { |b| b.tab(:name, icon: "building") {} }
     assert_select "i[class=\"fa fa-building\"]"
   end
 
-  test "#tab given the label option renders with the given label" do
+  test "#tab given options[:label] renders with the given label" do
     with_concat_tabs_for(object) { |b| b.tab(:name, label: "Custom Label") {} }
     assert_select "a", text: "Custom Label"
   end
 
-  test "#tab given the help option renders a help text under the tab" do
+  test "#tab given options[:help] renders a help text under the tab" do
     with_concat_tabs_for(object) { |b| b.tab(:name, help: "Only active projects") {} }
     assert_select "p" do |element|
       assert_select element, "i.fa-info-circle", text: "Only active projects"
     end
   end
 
+  test "#tab given options[:id] renders the tab and pane with given id" do
+    with_concat_tabs_for(object) { |b| b.tab(:name, id: :another_name) {} }
+    assert_select "a[aria-controls=\"another_name\"][href=\"#another_name\"]"
+    assert_select "div[id=\"another_name\"]"
+  end
 end
