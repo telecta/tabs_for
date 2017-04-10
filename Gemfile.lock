@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tabs_for (0.2.4)
+    tabs_for (0.2.5)
       font-awesome-rails (~> 4.0)
       rails (>= 3.2, < 5.0)
 
