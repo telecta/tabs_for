@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     tabs_for (0.2.5)
       font-awesome-rails (~> 4.0)
@@ -136,6 +136,7 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   coveralls
+  rails (~> 5.1.0)
   sqlite3
   tabs_for!
 
