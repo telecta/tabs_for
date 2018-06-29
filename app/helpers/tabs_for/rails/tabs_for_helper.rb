@@ -2,8 +2,11 @@ module TabsFor
   module Rails
     module TabsForHelper
 
-      def tabs_for(object, &block)
-        content_tag(:ul, class: 'nav nav-tabs', role: 'tablist') do
+      def tabs_for(object, options={}, &block)
+        classes = 'nav nav-tabs'
+        classes = options.delete(:class) if options[:class]
+
+        content_tag(:ul, class: classes, role: 'tablist') do
           capture TabBuilder.new(object, self), &block
         end + content_tag(:div, class: 'tab-content') do
           capture PaneBuilder.new(object, self), &block
