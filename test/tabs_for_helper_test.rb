@@ -38,6 +38,15 @@ class TabsFor::Rails::TabsForHelperTest < ActionView::TestCase
     assert_select "div[role=\"tabpanel\"][class=\"tab-pane\"][id=\"#{id}\"]", text: text
   end
 
+  test "custom class for tabs" do
+    tabs = tabs_for(object, class: 'tab-header') do |b|
+      b.tab("Label") { "Content" }
+    end
+
+    concat tabs
+    assert_select ".tab-header"
+  end
+
   test "#tab renders tab with translated header with a corresponding pane" do
     store_translations(:en, activerecord: {attributes: {project: {name: "Nome"}}}) do
       with_concat_tabs_for(object) { |b| b.tab(:name, size: 1) { "Content" } }
